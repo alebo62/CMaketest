@@ -7,4 +7,4 @@ project(HelloWorldPrj
 
 add_executable(HelloWorldPrjBinary main.cpp)
 
-target_compile_features(HelloWorldPrjBinary PRIVATE cxx_std_17)
+target_compile_features(HelloWorldPrjBinary PRIVATE cxx_std_20)
