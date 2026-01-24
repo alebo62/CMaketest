@@ -5,7 +5,13 @@ project(HelloWorldPrj
         DESCRIPTION "Project from LearnQtGuide"
         LANGUAGES CXX)
 
-add_executable(HelloWorldPrjBinary main.cpp src/dog.cpp src/operations.cpp)
+
+#GLOBING
+file(GLOB_RECURSE SOURCE_FILES src/*.cpp)
+add_executable(HelloWorldPrjBinary main.cpp ${SOURCE_FILES})
+
+
+#add_executable(HelloWorldPrjBinary main.cpp src/dog.cpp src/operations.cpp)
 
 target_compile_features(HelloWorldPrjBinary PRIVATE cxx_std_20)
 
