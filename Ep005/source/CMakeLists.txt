@@ -1,9 +1,12 @@
 cmake_minimum_required(VERSION 3.11)
 
+
 project(HelloWorldPrj
         VERSION 0.0.1
         DESCRIPTION "Project from LearnQtGuide"
         LANGUAGES CXX)
+
+#set (CMAKE_CXX_COMPILER  "D:/Program Files/LLVM/bin/clang.exe")
 
 
 #GLOBING
