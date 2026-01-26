@@ -25,12 +25,14 @@ add_library(operations STATIC src/operations.cpp)
 target_compile_features(operations PRIVATE cxx_std_14)
 target_include_directories(operations PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
+add_library(logger STATIC logger/src/log.cpp)
+target_include_directories(logger PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/logger/include)
+
 add_executable(HelloWorldPrjBinary main.cpp 
                 src/dog.cpp 
-                src/log.cpp
                )
 
 target_compile_features(HelloWorldPrjBinary PRIVATE cxx_std_14)
 target_include_directories(HelloWorldPrjBinary PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
-target_link_libraries(HelloWorldPrjBinary PRIVATE operations)
+target_link_libraries(HelloWorldPrjBinary PRIVATE operations logger)
 
