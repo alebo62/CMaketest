@@ -21,13 +21,16 @@ project(HelloWorldPrj
 #file(GLOB_RECURSE SOURCE_FILES src/*.cpp)
 #add_executable(HelloWorldPrjBinary main.cpp ${SOURCE_FILES})
 
+add_library(operations STATIC src/operations.cpp)
+target_compile_features(operations PRIVATE cxx_std_14)
+target_include_directories(operations PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 add_executable(HelloWorldPrjBinary main.cpp 
                 src/dog.cpp 
-                src/operations.cpp
                 src/log.cpp
-                )
+               )
 
-target_compile_features(HelloWorldPrjBinary PRIVATE cxx_std_20)
+target_compile_features(HelloWorldPrjBinary PRIVATE cxx_std_14)
+target_include_directories(HelloWorldPrjBinary PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_link_libraries(HelloWorldPrjBinary PRIVATE operations)
 
-target_include_directories(HelloWorldPrjBinary PRIVATE ${CMAKE_SOURCE_DIR}/include)
