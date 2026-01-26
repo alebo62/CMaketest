@@ -13,6 +13,6 @@ add_executable(HelloWorldPrjBinary main.cpp ${SOURCE_FILES})
 
 #add_executable(HelloWorldPrjBinary main.cpp src/dog.cpp src/operations.cpp)
 
-target_compile_features(HelloWorldPrjBinary PRIVATE cxx_std_20)
+target_compile_features(HelloWorldPrjBinary PRIVATE cxx_std_17)
 
 target_include_directories(HelloWorldPrjBinary PRIVATE ${CMAKE_SOURCE_DIR}/include)
