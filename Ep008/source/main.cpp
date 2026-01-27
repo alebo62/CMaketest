@@ -1,21 +1,13 @@
 #include <iostream>
-#include "dog.hpp"
-#include "operations.hpp"
-#include "log.hpp"
+#include "stats.hpp"
+#include <vector>
 
-int main(){
+int main()
+{
 
-auto value = ((10 <=> 20) > 0);
-std::cout << "value: " << value << std::endl;
+    std::vector<int> v = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
-std::cout << add(20, 6) << std::endl;
+    std::cout << "mean of vector: " << mean(v.data(), v.size());
 
-Dog dog1((std::string)"Mike");
-dog1.print_info();
-
-
-
-log_data("Message", LogType::FATAL_ERR);
-
-return 0;
+    return 0;
 }
