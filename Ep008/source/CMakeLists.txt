@@ -8,36 +8,19 @@
 
 cmake_minimum_required(VERSION 3.11)
 
-#set(CXX_STANDARD_REQUIRED ON)
-#set(CMAKE_CXX_STANDARD 20)
 
+add_library(libmath STATIC src/maths/supermath.cpp)
+target_compile_features(libmath PRIVATE cxx_std_20)
+target_include_directories(libmath PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/maths/include)
 
-project(HelloWorldPrj
-        VERSION 1.0.0
-        DESCRIPTION "Project from LearnQtGuide"
-        LANGUAGES CXX)
+add_library(libstats STATIC src/stats/stats.cpp)
+target_compile_features(libstats PUBLIC cxx_std_20)
+target_include_directories(libstats PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}src/stats/include)
+target_link_libraries(libstats PRIVATE libmath)
 
-#set (CMAKE_CXX_COMPILER  "D:/Program Files/LLVM/bin/clang.exe")
+add_executable(roster src/main.cpp )
 
-
-#GLOBING
-#file(GLOB_RECURSE SOURCE_FILES src/*.cpp)
-#add_executable(HelloWorldPrjBinary main.cpp ${SOURCE_FILES})
-
-add_library(operations STATIC src/operations.cpp)
-target_compile_features(operations PRIVATE cxx_std_20)
-target_include_directories(operations PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
-
-add_library(logger STATIC logger/src/log.cpp)
-target_compile_features(logger PUBLIC cxx_std_20)
-target_include_directories(logger PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/logger/include)
-
-
-add_executable(HelloWorldPrjBinary main.cpp 
-                src/dog.cpp 
-               )
-
-target_compile_features(HelloWorldPrjBinary PRIVATE cxx_std_20)
-target_include_directories(HelloWorldPrjBinary PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
-target_link_libraries(HelloWorldPrjBinary PRIVATE operations logger)
+target_compile_features(rooster PRIVATE cxx_std_20)
+target_include_directories(rooster PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_link_libraries(rooster PRIVATE libstats)
 
